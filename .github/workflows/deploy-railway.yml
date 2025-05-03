@@ -33,7 +33,7 @@ jobs:
       - name: Login Railway  
         env:  
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}  
-        run: railway login --apiKey $RAILWAY_TOKEN  
+        run: railway login --browserless
 
       - name: Deploy to Railway  
         run: railway up --non-interactive  
