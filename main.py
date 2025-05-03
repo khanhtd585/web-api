@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request, Header, HTTPException, status, Depends
+from fastapi.responses import RedirectResponse
 from prometheus_fastapi_instrumentator import Instrumentator
 from logger import logger
 from config import API_KEY
@@ -28,6 +29,10 @@ def verify_api_key(x_api_key: str = Header(...)):
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
+@app.get("/")
+def index():
+    return RedirectResponse("/docs", status_code=308)
 
 @app.post("/webhook", dependencies=[Depends(verify_api_key)])
 async def webhook_handler(request: Request):
