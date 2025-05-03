@@ -25,6 +25,11 @@ jobs:
         run: |  
           curl -sL https://railway.app/install.sh | sh  
 
+      - name: Check key
+        env:  
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}  
+        run: echo $RAILWAY_TOKEN  
+
       - name: Login Railway  
         env:  
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}  
