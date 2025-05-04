@@ -33,5 +33,5 @@ jobs:
         run: |
           echo RAILWAY_TOKEN: $env.RAILWAY_TOKEN
 
-      - name: Deploy to Railway  
-        run: RAILWAY_TOKEN=$env.RAILWAY_TOKEN railway up
+      # - name: Deploy to Railway  
+      #   run: RAILWAY_TOKEN=$env.RAILWAY_TOKEN railway up
