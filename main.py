@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request, Header, HTTPException, status, Depends
 from fastapi.responses import RedirectResponse
 from prometheus_fastapi_instrumentator import Instrumentator
+import uvicorn
 from logger import logger
 from config import API_KEY
 
@@ -40,3 +41,8 @@ async def webhook_handler(request: Request):
     logger.info(f"Webhook payload: {body}")
     # Do processing here...
     return {"status": "received", "data": body}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
+    
