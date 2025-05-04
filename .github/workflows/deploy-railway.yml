@@ -7,7 +7,7 @@ on:
 
 env:
   # Setting an environment variable with the value of a configuration variable
-  env_RAILWAY_TOKEN: ${{ vars.RAILWAY_TOKEN }}
+  env_RAILWAY_TOKEN: ${{ env.RAILWAY_TOKEN }}
 
 jobs:  
   build-and-deploy:  
@@ -30,7 +30,8 @@ jobs:
           curl -sL https://railway.app/install.sh | sh  
 
       - name: Check key
-        run: echo $env_RAILWAY_TOKEN  
+        run: |
+          echo RAILWAY_TOKEN: $env.RAILWAY_TOKEN
 
       - name: Deploy to Railway  
-        run: RAILWAY_TOKEN=$env_RAILWAY_TOKEN railway up
+        run: RAILWAY_TOKEN=$env.RAILWAY_TOKEN railway up
